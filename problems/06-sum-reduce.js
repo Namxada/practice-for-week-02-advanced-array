@@ -14,6 +14,10 @@ console.log(sumWithReduce([])); // 0
 
 let sumWithReduce = function(nums) {
   // Your code here
+  let initialValue = 0;
+  return nums.reduce(function(accumulator, currentValue){
+    return accumulator + currentValue;
+  }, initialValue);
 };
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
