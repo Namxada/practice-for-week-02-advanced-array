@@ -16,16 +16,39 @@ console.log(hasThreeVowels('go home'));         //  false
 
 */
 
+// let hasThreeVowels = function(string) {
+//     // Your code here
+//     let vowels = "aeiou";
+//     let letters = string.split('');
+//     let uniqueVowels = letters.filter(function(letter, index){
+//         return vowels.includes(letter) && letters.indexOf(letter) === index;
+//     });
+//     return uniqueVowels.length >= 3;
+// };
+
+// let hasThreeVowels = function(string) {
+//     let vowels = "aeiou";
+//     let uniqueVowels = [];
+//     let letters = string.split('');
+//     letters.forEach(function(letter){
+//         if (vowels.includes(letter) && !uniqueVowels.includes(letter)) {
+//             uniqueVowels.push(letter);
+//         };
+//     });
+//     return uniqueVowels.length >= 3;
+// };
+
 let hasThreeVowels = function(string) {
-    // Your code here
     let vowels = "aeiou";
     let letters = string.split('');
-    let includedVowels = letters.filter(function(letter){
-        return vowels.includes(letter);
-    });
-    let uniqueVowels = includedVowels.filter(function(element, index){
-        return includedVowels.indexOf(element) === index;
-    });
+    let initialValue = [];
+    let uniqueVowels = letters.reduce(function(accumulator, currentValue){
+        if (vowels.includes(currentValue) &&
+            !accumulator.includes(currentValue)){
+            accumulator.push(currentValue);
+        };
+        return accumulator;
+    },initialValue);
     return uniqueVowels.length >= 3;
 };
 
