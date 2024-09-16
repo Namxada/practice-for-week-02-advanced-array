@@ -15,29 +15,29 @@ console.log(shortestWord('do what you enjoy'));         // 'do'
 */
 
 // let shortestWord = function(sentence) {
-//   // Your code here
 //   let words = sentence.split(' ');
-//   let wordLength = words.map(function(word){
-//     return word.length;
+//   let minLength = words.reduce(function(accumulator, currentVal){
+//     if (currentVal.length < accumulator){
+//       return currentVal.length;
+//     } else {
+//       return accumulator;
+//     }
+//   }, words[0].length);
+//   let shortestWords = words.filter(function(word){
+//     return word.length === minLength;
 //   });
-//   let minLength = Math.min(...wordLength);
-//   let index = wordLength.indexOf(minLength, -(words.length - 1));
-//   return words[index];
+//   return shortestWords.pop();
 // };
 
 let shortestWord = function(sentence) {
   let words = sentence.split(' ');
-  let minLength = words.reduce(function(accumulator, currentVal){
-    if (currentVal.length < accumulator){
-      return currentVal.length;
-    } else {
-      return accumulator;
-    }
-  }, words[0].length);
-  let shortestWords = words.filter(function(word){
-    return word.length === minLength;
+  let shortest = words.reduce(function(accumulator, currentVal){
+    if (currentVal.length <= accumulator.length){
+      accumulator = currentVal;
+    };
+    return accumulator;
   });
-  return shortestWords.pop();
+  return shortest;
 };
 
 
