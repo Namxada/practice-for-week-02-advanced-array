@@ -14,12 +14,23 @@ console.log(unique(['a', 'b', 'c', 'b'])); // ['a', 'b', 'c']
 
 */
 
+// let unique = function(array) {
+//     // Your code here
+//     let newArray = array.filter(function(el, i){
+//         return array.indexOf(el) === i;
+//     });
+//     return newArray;
+// };
+
 let unique = function(array) {
-    // Your code here
-    let newArray = array.filter(function(el, i){
-        return array.indexOf(el) === i;
-    });
-    return newArray;
+    let initialValue = [];
+    let uniqueArray = array.reduce(function(accumulator, currentVal){
+        if (!accumulator.includes(currentVal)){
+            accumulator.push(currentVal);
+        };
+        return accumulator;
+    }, initialValue);
+    return uniqueArray;
 };
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
